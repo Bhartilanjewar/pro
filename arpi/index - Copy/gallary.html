@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h2 {
+              color: white; /* White text */
+              background-color: black; /* Dark background */
+              padding: 10px;
+              text-decoration: underline;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .gallery-item {
+            text-align: center;
+        }
+        .gallery img {
+            width: 350px;
+            height: 250px;
+            background-color: lightgray;
+            border: 1px solid black;
+            object-fit: cover;
+            padding: 2px;
+        }
+        .image-row {
+            display: flex;
+            object-fit: cover;
+            
+            margin-bottom: 20px;
+        }
+        .comment-box {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 60%;
+            height: 50px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        .submit-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color:darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Gallery</h2>
+
+    <!-- First Row with Information -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="IMG1.jpg" alt="Image 1">
+            <b><p> <a href="flag photo.html" target="_blank">Flag hoisting celebration</a></p></b>
+        </div>
+        <div class="gallery-item">
+            <img src="IMG2.jpg" alt="Image 2">
+            <b><p><a href="health camp.html" target="_blank">Health Camp</a></p></b>
+        </div>
+        <div class="gallery-item">
+            <img src="IMG3.jpg" alt="Image 3">
+            <b><p><a href="shivajiphotos.html" target="_blank">Shivjayanti celebration</a></p></b>
+        </div>
+    </div>
+
+    <!-- Second Row with Only Images -->
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+    <img src="IMG4.jpg" alt="Image 4" width="300" height="200">
+    <img src="IMG5.jpg" alt="Image 5" width="300" height="200">
+    <img src="IMG6.jpg" alt="Image 6" width="300" height="200">
+    <img src="IMG7.jpg" alt="Image 7" width="300" height="200">
+</marquee>
+    
+
+    <!-- Comment Section -->
+    <div class="comment-box">
+        <B><label for="comment">COMMENT:</label></B>
+        <textarea id="comment" placeholder="Write your comment here..."></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="submit-btn" onclick="submitComment()">Submit</button>
+
+    <script>
+        function submitComment() {
+            let comment = document.getElementById("comment").value;
+            if (comment.trim() === "") {
+                alert("Please enter a comment before submitting.");
+            } else {
+                alert("Comment Submitted: " + comment);
+            }
+        }
+    </script>
+
+</body>
+</html>

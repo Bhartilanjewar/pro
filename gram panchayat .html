@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gram Panchayat Development</title>
+    <style>
+        @import url("grampanchayat.css");
+      </style> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Gram Panchayat Development1_files/goverment logo.jpeg" alt="Government Logo">
+        </div>
+        <div class="header-text">
+            <h1>Gram Panchayat and Vikas Vibhag</h1>
+            <p>Rural Development & Panchayat Raj Development</p>
+            <p>Government of Maharashtra</p>
+        </div>
+        <div class="right-logo">
+            <img src="./Gram Panchayat Development1_files/azadi ka logo.jpeg" alt="Azadi Ka Amrit Mahotsav">
+        </div>
+    </header>
+
+    <!-- Responsive Menu Button -->
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="index - Copy/gallary.html">Photo Gallery</a></li>
+            <li><a href="index - Copy/cpp project.html">Contact Us</a></li>
+            <li><a href="finalscheme.html">Schemes</a></li>
+            <li><a href="http://localhost/megha%20project/register.php">Login/Register</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Certificate ▼</a>
+                <div class="dropdown-content">
+                    <a href="Cast Certificate.html">Cast</a>
+                    <a href="Birth Certificate.html">Birth</a>
+                    <a href="Death Certificate.html">Death</a>
+                    <a href="Marriage Certificate.html">Marriage</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">RTI ▼</a>
+                <div class="dropdown-content">
+                    <a href="tel:+91 8007025523"><strong>Sarpanch:</strong>  Mrs.Darshana pramod bagade - +91  8007025523</a>
+                    <a href="tel:+91 9604392717"><strong>Upsarpanch::</strong>Mr. Rampal keshvrao dhande - +91  9604392717</a>
+                    <a href="tel:+912345678901"><strong>Gramsevak:</strong> Mr. vaibhav Bavankar   - +91 7020004860</a>
+                    <a href="mailto:info@grampanchayat.com"><strong>Email:</strong> info@grampanchayat.com</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Welcome To Gram Panchayat Tondli</h2>
+
+        <!-- Static Image -->
+        <img class="static-image" src="Gram Panchayat Development1_files/grampanchayt image2.jpg" alt="Gram Panchayat Image">
+
+        <!-- Image Slider -->
+        <div class="slider-container">
+            <button class="prev">❮</button>
+            <div class="slider">
+                <img class="slider-image active" src="image1.jpg" alt="Slide 1">
+                <img class="slider-image" src="image2.jpg" alt="Slide 2">
+                <img class="slider-image" src="image3.jpg" alt="Slide 3">
+                <img class="slider-image" src="image4.jpg" alt="Slide 4">
+                <img class="slider-image" src="image5.jpg" alt="Slide 5">
+            </div>
+            
+            <button class="next">❯</button>
+        </div>
+    </main>
+
+    <footer>
+        <h1>About</h1>
+        <div class="footer-section">
+            <div>
+                <h4>Contact Information</h4>
+                <a href="tel:+91 8007025523"><strong>Sarpanch:</strong> Darshana pramod bagade  - +91  8007025523</a>
+                <a href="tel:+91 960439271"><strong>Upsarpanch:</strong> Rampal keshvrao dhande - +91 9604392717</a>
+                <a href="tel:+912345678901"><strong>Gramsevak:</strong> Mr. vaibhav Bavankar   - +91 7020004860</a>
+                <a href="mailto:info@grampanchayat.com"><strong>Email:</strong> info@grampanchayat.com</a>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="gallary.html">Our Gallery</a>
+                <a href="Contact Us.html">Contact Us</a>
+                <a href="finalscheme.html">Schemes</a>
+            </div>
+
+      
+            </div>
+        </div>
+        <p class="hover-blue">&copy; 2025-26 Gram Panchayat Tondli. Site Design & Developed By : @Suhani Aswale @Bharti Lanjewar @Arpita Mankar</p>
+
+    </footer>
+
+    <!-- JavaScript for Menu and Slider -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("show");
+        }
+
+    // Menu toggle function
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg"];
+        const slider = document.querySelector(".slider");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        let currentIndex = 0; // Track current active image
+        let slideInterval;
+        const slideDuration = 1000; // 3 seconds per slide
+    
+        function updateSlider() {
+            const imageElements = document.querySelectorAll(".slider-image");
+            imageElements.forEach((img, i) => {
+                img.src = images[(currentIndex + i) % images.length]; // Loop images correctly
+                img.classList.remove("active", "prev", "next");
+            });
+    
+            imageElements[0].classList.add("prev");
+            imageElements[1].classList.add("active");
+            imageElements[2].classList.add("next");
+        }
+    
+        function rotateImages(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateSlider();
+        }
+    
+        function startAutoSlide() {
+            slideInterval = setInterval(() => {
+                rotateImages(1);
+            }, slideDuration);
+        }
+    
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+    
+        function resetAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+    
+        prevBtn.addEventListener("click", () => {
+            console.log("Prev button clicked"); // Debugging
+            rotateImages(-1);
+            resetAutoSlide();
+        });
+        
+        nextBtn.addEventListener("click", () => {
+            console.log("Next button clicked"); // Debugging
+            rotateImages(1);
+            resetAutoSlide();
+        });
+        
+    
+        // Pause auto-slide on hover
+        slider.addEventListener("mouseenter", stopAutoSlide);
+        slider.addEventListener("mouseleave", startAutoSlide);
+    
+        // Touch support for mobile devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+    
+        slider.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, { passive: true });
+    
+        slider.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            resetAutoSlide();
+        }, { passive: true });
+    
+        function handleSwipe() {
+            const threshold = 50; // Minimum swipe distance
+            if (touchStartX - touchEndX > threshold) {
+                rotateImages(1); // Swipe left - next
+            } else if (touchEndX - touchStartX > threshold) {
+                rotateImages(-1); // Swipe right - previous
+            }
+        }
+    
+        updateSlider();
+        startAutoSlide();
+    });
+    
+    
+</script>
+
+
+</body>
+
+</html>

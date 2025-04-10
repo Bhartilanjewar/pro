@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Collage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 20px;
+        }
+
+        .collage img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Making it responsive */
+        @media (max-width: 768px) {
+            .collage {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .collage {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center; margin-top: 20px;">Health Camp</h2>
+
+    <div class="collage">
+        <img src="health1.jpg" alt="Photo 1">
+        <img src="health2.jpg" alt="Photo 2">
+        <img src="health3.jpg" alt="Photo 3">
+        <img src="health4.jpg" alt="Photo 4">
+        <img src="images/photo5.jpg" alt="Photo 5">
+        <img src="images/photo6.jpg" alt="Photo 6">
+    </div>
+
+</body>
+</html>      

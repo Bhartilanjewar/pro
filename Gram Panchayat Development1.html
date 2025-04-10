@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gram Panchayat Development</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f6f5f5;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: white;
+            flex-wrap: wrap;
+        }
+
+        .logo img, .right-logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-text h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-text p {
+            font-size: 18px;
+            color: gray;
+        }
+
+        nav {
+            background-color: #3b82f6;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 5px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #2563eb;
+            border-radius: 5px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Static Image Styles */
+        .static-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .static-image img {
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+        }
+
+        /* Image Slider Styles */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        .slider-images {
+            display: none;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Button Styles */
+        .menu-btn {
+            display: none;
+            background: #3b82f6;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(to right, #333, #555);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer .footer-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        footer .footer-section div {
+            width: 200px;
+            margin: 10px;
+            text-align: left;
+        }
+
+        footer .footer-section h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            display: block;
+            font-size: 14px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer .footer-section a:hover {
+            color: #2563eb;
+        }
+
+        footer .social-icons a {
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 10px;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer .social-icons a:hover {
+            color: #2563eb;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        footer p a {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            /* Tablet Styles */
+            .header-text h1 {
+                font-size: 22px;
+            }
+
+            .header-text p {
+                font-size: 16px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+            }
+
+            .static-image img {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Styles */
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text h1 {
+                font-size: 20px;
+            }
+
+            .header-text p {
+                font-size: 14px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .static-image img {
+                max-width: 90%;
+            }
+
+            footer .footer-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer .footer-section div {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Small Mobile Styles */
+            .header-text h1 {
+                font-size: 18px;
+            }
+
+            .header-text p {
+                font-size: 12px;
+            }
+
+            .static-image img {
+                max-width: 100%;
+            }
+
+            footer .footer-section h4 {
+                font-size: 16px;
+            }
+
+            footer .footer-section a {
+                font-size: 12px;
+            }
+
+            footer p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Gram Panchayat Development1_files/goverment logo.jpeg" alt="Government Logo">
+        </div>
+        <div class="header-text">
+            <center>Gram Panchayat and Vikas Vibhag</center>
+            <h1>Rural Development & Panchayat Raj Development</h1>
+            <p>Government of Maharashtra</p>
+        </div>
+        <div class="right-logo">
+            <img src="./Gram Panchayat Development1_files/azadi ka logo.jpeg" alt="Azadi Ka Amrit Mahotsav">
+        </div>
+    </header>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="gallary.html">Our Gallery</a></li>
+            <li><a href="Contact Us.html">Contact Us</a></li>
+            <li><a href="finalscheme.html">Schemes</a></li>
+            <li><a href="http://localhost/megha%20project/register.php">Login/Register</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Certificate ▼</a>
+                <div class="dropdown-content">
+                    <a href="Cast Certificate.html">Caste</a>
+                    <a href="Birth Certificate.html">Birth</a>
+                    <a href="Death Certificate.html">Death</a>
+                    <a href="Marriage Certificate.html">Marriage</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Welcome To Gram Panchayat Sukali</h2>
+        
+        <!-- Static Image -->
+        <div class="static-image">
+            <img src="./Gram Panchayat Development1_files/grampanchayt image.jpeg" alt="Gram Panchayat Image">
+        </div>
+
+        <!-- Image Slider Below -->
+        <div class="slider-container">
+            <!-- Slider Images -->
+            <img class="slider-images" src="image1.jpg" alt="Image 1">
+            <img class="slider-images" src="image2.jpg" alt="Image 2">
+            <img class="slider-images" src="image3.jpg" alt="Image 3">
+
+            <!-- Prev and Next Buttons -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </main>
+
+    <footer>
+        <h1><center>About</center></h1>
+        <div class="footer-section">
+            <div>
+                <h4>Contact Information</h4>
+                <a href="tel:+912345678900"><strong>Sarpanch:</strong> Mr. A. Kumar - +91 234 567 8900</a>
+                <a href="tel:+912345678901"><strong>Upsarpanch:</strong> Mrs. S. Patel - +91 234 567 8901</a>
+                <a href="mailto:info@grampanchayat.com"><strong>Email:</strong> info@grampanchayat.com</a>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="gallary.html">Our Gallery</a>
+                <a href="Contact Us.html">Contact Us</a>
+                <a href="finalscheme.html">Schemes</a>
+            </div>
+
+            <div>
+                <h4>Social Media</h4>
+                <div class="social-icons">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="#" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2023 Gram Panchayat Sukali. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle Menu for Mobile
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Image Slider Functionality
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slider-images');
+            if (index >= slides.length) { currentSlideIndex = 0; }
+            if (index < 0) { currentSlideIndex = slides.length - 1; }
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === currentSlideIndex) ? 'block' : 'none';
+            });
+        }
+
+        function changeSlide(n) {
+            currentSlideIndex += n;
+            showSlide(currentSlideIndex);
+        }
+
+        // Initialize the slider
+        showSlide(currentSlideIndex);
+    </script>
+</body>
+</html>

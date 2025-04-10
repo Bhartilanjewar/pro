@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cast Certificate V2</title>
+    <style>
+
+        body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ffffff,white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius:0px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0b0b0b;
+}
+h6{
+    font-size: 15px;
+    text-align: right;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.certificate {
+    margin-top: 20px;
+    display: none;
+}
+
+.details {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+strong {
+    color: #030303;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cast Certificate</h1>
+        <h6>Date: __ / __ / ____</h6>
+        <form action="submit_v2.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="cast">Cast Name:</label>
+            <input type="text" id="cast" name="cast_name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="mob">Mobile No:</label>
+            <input type="text" id="mob" name="mobile" required>
+
+            <button type="submit">Generate Certificate</button>
+        </form>
+
+        <div class="certificate" id="certificate" style="display: none;">
+            <h1>Cast Certificate</h1>
+            <div class="details">
+                <p><strong>Name:</strong> <span id="certName"></span></p>
+                <p><strong>Gender:</strong> <span id="certGender"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="certDob"></span></p>
+                <p><strong>Cast Name:</strong> <span id="certCast"></span></p>
+                <p><strong>Address:</strong> <span id="certAddress"></span></p>
+                <p><strong>Mobile No:</strong> <span id="certMob"></span></p>
+            </div>
+            <button id="printBtn">Print Certificate</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('castCertificateForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get values from the form
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const dob = document.getElementById('dob').value;
+            const cast = document.getElementById('cast').value;
+            const address = document.getElementById('address').value;
+            const mob = document.getElementById('mob').value;
+
+            // Display the certificate
+            document.getElementById('certificate').style.display = 'block';
+
+            // Fill in the certificate details
+            document.getElementById('certName').textContent = name;
+            document.getElementById('certGender').textContent = gender;
+            document.getElementById('certDob').textContent = dob;
+            document.getElementById('certCast').textContent = cast;
+            document.getElementById('certAddress').textContent = address;
+            document.getElementById('certMob').textContent = mob;
+
+            // Add print functionality
+            document.getElementById('printBtn').addEventListener('click', function() {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html>
